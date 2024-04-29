@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E o Banco, hein?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="pedirNome()">
+
+
+    <h1>Bem Vindo <span id="nome"></span> </h1>
+
+    <button id="executarSaldo">Saldo</button>
+    <button id="executarExtrato">Extrato</button>
+    <button id="executarSaque">Saque</button>
+    <button id="executarDepositor">Depósito</button>
+    <button id="executarTransferencia">Transferência</button>
+    <button id="executarSair">Sair</button>
+
+    <script src="js/executarSaldo.js"></script>
+
+    <script>
+
+        document.getElementById("executarSaldo").addEventListener("click", executarSaldo) 
+    </script>
+
+    <script>
+        function pedirNome() {
+            var nome = prompt("Olá! Por favor, digite seu nome: ")
+            if (nome != null && nome != "") {
+                document.getElementById("nome").innerHTML = nome;
+                alert(`Olá, ${nome}! Bem vindo ao Banco hein.`)
+            } else {
+                alert(`Você não inseriu um nome. Por favor, recarregue a página.`)
+            }
+        }
+    </script>
+</body>
+
+</html>
