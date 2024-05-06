@@ -10,24 +10,40 @@
 
 <body onload="pedirNome()">
 
+    <!-- ver como colocar o saldo na tela -->
 
     <h1>Bem Vindo <span id="nome"></span> </h1>
 
     <button id="executarSaldo">Saldo</button>
-    <button id="executarExtrato">Extrato</button>
     <button id="executarSaque">Saque</button>
+    <button id="executarExtrato">Extrato</button>
     <button id="executarDepositor">Depósito</button>
     <button id="executarTransferencia">Transferência</button>
     <button id="executarSair">Sair</button>
 
     <script src="js/executarSaldo.js"></script>
+    <script src="js/executarSaque.js"></script>
+    <script src="js/executarExtrato.js"></script>
+    <script src="js/executarDepositar.js"></script>
+    <script src="js/executarTransferencia.js"></script>
+    <script src="js/executarSair.js"></script>
 
     <script>
+        var saldo = 500;
+        window.saldo = saldo;
 
-        document.getElementById("executarSaldo").addEventListener("click", executarSaldo) 
+        document.getElementById("executarSaldo").addEventListener("click", executarSaldo);
+        document.getElementById("executarSaque").addEventListener("click", executarSaque);
+        document.getElementById("executarExtrato").addEventListener("click", executarExtrato);
+        document.getElementById("executarDepositor").addEventListener("click", executarDepositor);
+        document.getElementById("executarTransferencia").addEventListener("click", executarTransferencia);
+        document.getElementById("executarSair").addEventListener("click", executarSair); 
     </script>
 
-    <script>
+
+
+    <!-- pede para inserir o nome -->
+    <!-- <script>
         function pedirNome() {
             var nome = prompt("Olá! Por favor, digite seu nome: ")
             if (nome != null && nome != "") {
@@ -37,7 +53,7 @@
                 alert(`Você não inseriu um nome. Por favor, recarregue a página.`)
             }
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
