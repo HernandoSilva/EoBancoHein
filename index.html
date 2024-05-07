@@ -37,7 +37,22 @@
         document.getElementById("executarExtrato").addEventListener("click", executarExtrato);
         document.getElementById("executarDepositor").addEventListener("click", executarDepositor);
         document.getElementById("executarTransferencia").addEventListener("click", executarTransferencia);
-        document.getElementById("executarSair").addEventListener("click", executarSair); 
+        document.getElementById("executarSair").addEventListener("click", executarSair);
+
+
+        var data = new Date();
+        var mes = data.getMonth() + 1;
+        var ano = data.getFullYear();
+        var registro = `\n${mes}/${ano} | Saque realizado | -R$${window.saque.toFixed(2)}\n`;
+        adicionarAoExtrato(registro);
+
+        function adicionarAoExtrato(registro) {
+            if (!window.extrato) {
+                window.extrato = [];
+            }
+            window.extrato.push(registro);
+        }
+
     </script>
 
 
