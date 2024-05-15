@@ -5,70 +5,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E o Banco, hein?</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body onload="pedirNome()">
-
-    <!-- ver como colocar o saldo na tela -->
-
-    <h1>Bem Vindo <span id="nome"></span> </h1>
-
-    <button id="executarSaldo">Saldo</button>
-    <button id="executarSaque">Saque</button>
-    <button id="executarExtrato">Extrato</button>
-    <button id="executarDepositor">Depósito</button>
-    <button id="executarTransferencia">Transferência</button>
-    <button id="executarSair">Sair</button>
-
-    <script src="js/executarSaldo.js"></script>
-    <script src="js/executarSaque.js"></script>
-    <script src="js/executarExtrato.js"></script>
-    <script src="js/executarDepositar.js"></script>
-    <script src="js/executarTransferencia.js"></script>
-    <script src="js/executarSair.js"></script>
-
     <script>
-        var saldo = 500;
-        window.saldo = saldo;
 
-        document.getElementById("executarSaldo").addEventListener("click", executarSaldo);
-        document.getElementById("executarSaque").addEventListener("click", executarSaque);
-        document.getElementById("executarExtrato").addEventListener("click", executarExtrato);
-        document.getElementById("executarDepositor").addEventListener("click", executarDepositor);
-        document.getElementById("executarTransferencia").addEventListener("click", executarTransferencia);
-        document.getElementById("executarSair").addEventListener("click", executarSair);
+        var saldo = 500
 
+        var nome = prompt(`Olá! Digite seu nome: `)
 
-        var data = new Date();
-        var mes = data.getMonth() + 1;
-        var ano = data.getFullYear();
-        var registro = `\n${mes}/${ano} | Saque realizado | -R$${window.saque.toFixed(2)}\n`;
-        adicionarAoExtrato(registro);
+        inicio();
 
-        function adicionarAoExtrato(registro) {
-            if (!window.extrato) {
-                window.extrato = [];
+        function inicio() {
+            var opcao = (prompt(`Olá ${nome}! O que deseja fazer hoje?\n1- Verificar Saldo\n2- Verificar Extrato\n3- Realizar Saque\n4- Realizar Depósito\n5- Realizar Transferência\n6- Sair `))
+
+            if (opcao == '1') {
+                verSaldo();
+            } else if (opcao == '2') {
+                extrato();
+            } else if (opcao == '3') {
+                saque()
+            } else if (opcao == '4') {
+                deposito();
+            } else if (opcao == '5') {
+                transferencia();
+            } else if (opcao == '6') {
+                sair();
+            } else {
+                alert(`Digite uma opção válida.`)
+                inicio();
             }
-            window.extrato.push(registro);
+
+        }
+
+
+        function verSaldo() {
+            alert(`Seu saldo atual é: R$${saldo}.`)
+            inicio();
+        }
+
+        function extrato() {
+            alert(`12/05 - Saque realizado: R$ 200.\n13/05 - Depósito realizado: R$ 700.\n14/05 - Saque realizado: R$ 200. `)
+            inicio();
+        }
+
+        function saque() {
+            var valorSaque = parseFloat(prompt(`Digite o valor que deseja sacar: `))
+
+            while (valorSaque <= 0 || valorSaque > saldo) {
+                alert(`O valor para saque é inválido. Operação não autorizada.`)
+                saque();
+            }
+
+            saldo -= valorSaque
+
+            alert(`Foram sacados R$${valorSaque}.\nSaldo atual: ${saldo}`)
+            inicio();
+        }
+
+        function deposito() {
+            var valorDeposito = parseFloat(prompt(`Digite o valor que deseja depositar: `))
+
+            while (valorDeposito <= 0 || valorDeposito > saldo) {
+                alert(`O valor para  é inválido. Operação não autorizada.`)
+                saque();
+            }
+
+            saldo += valorDeposito
+
+            alert(`Foram sacados R$${valorDeposito}.\nSaldo atual: ${saldo}`)
+            inicio();
+
+
+
+        }
+
+        function transferencia() {
+
+        }
+
+        function sair() {
+
         }
 
     </script>
+</head>
 
+<body>
 
-
-    <!-- pede para inserir o nome -->
-    <!-- <script>
-        function pedirNome() {
-            var nome = prompt("Olá! Por favor, digite seu nome: ")
-            if (nome != null && nome != "") {
-                document.getElementById("nome").innerHTML = nome;
-                alert(`Olá, ${nome}! Bem vindo ao Banco hein.`)
-            } else {
-                alert(`Você não inseriu um nome. Por favor, recarregue a página.`)
-            }
-        }
-    </script> -->
 </body>
 
 </html>
