@@ -5,23 +5,31 @@ var nome = prompt(`Olá! Digite seu nome: `)
 inicio();
 
 function inicio() {
-    var opcao = (prompt(`Olá ${nome}! O que deseja fazer hoje?\n\n1- Verificar Saldo\n2- Verificar Extrato\n3- Realizar Saque\n4- Realizar Depósito\n5- Realizar Transferência\n6- Sair `))
+    var opcao = parseInt(prompt(`Olá ${nome}! O que deseja fazer hoje?\n\n1- Verificar Saldo\n2- Verificar Extrato\n3- Realizar Saque\n4- Realizar Depósito\n5- Realizar Transferência\n6- Sair `))
 
-    if (opcao == '1') {
-        verSaldo();
-    } else if (opcao == '2') {
-        extrato();
-    } else if (opcao == '3') {
-        saque()
-    } else if (opcao == '4') {
-        deposito();
-    } else if (opcao == '5') {
-        transferencia();
-    } else if (opcao == '6') {
-        sair();
-    } else {
-        alert(`Digite uma opção válida.`)
-        inicio();
+    switch (opcao) {
+        case 1:
+            verSaldo();
+            break;
+        case 2:
+            extrato();
+            break;
+        case 3:
+            saque();
+            break;
+        case 4:
+            deposito();
+            break;
+        case 5:
+            transferencia();
+            break;
+        case 6:
+            sair();
+            break;
+        default:
+            alert(`Digite uma opção válida.`)
+            inicio();
+            break;
     }
 
 }
